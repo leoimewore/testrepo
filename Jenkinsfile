@@ -38,7 +38,7 @@ pipeline
         stage('Deploy to Nexus') {
             steps {
                nexusArtifactUploader artifacts: [[artifactId: 'RegistrationApp',
-               classifier: '', file: 'target/RegistrationApp-1.3.war',
+               classifier: '', file: 'target/RegistrationApp-1.*',
                type: 'war']], 
                credentialsId: 'nexus', 
                groupId: 'com.example', 
