@@ -46,7 +46,7 @@ pipeline
                nexusVersion: 'nexus3', 
                protocol: 'http', 
                repository: 'project',
-               version: '1.3'
+               version: 'v1.$BUILD_NUMBER'
             }
         }
         
