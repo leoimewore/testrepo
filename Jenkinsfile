@@ -35,26 +35,26 @@ pipeline
             }
         }
 
-        stage('Deploy to Nexus') {
-            steps {
-               nexusArtifactUploader artifacts: [[artifactId: 'RegistrationApp',
-               classifier: '', file: 'target/RegistrationApp-1.2.war',
-               type: 'war']], 
-               credentialsId: 'nexus', 
-               groupId: 'com.example', 
-               nexusUrl: '18.191.133.95:8081', 
-               nexusVersion: 'nexus3', 
-               protocol: 'http', 
-               repository: 'project',
-               version: 'v1.$BUILD_NUMBER'
-            }
-        }
+        // stage('Deploy to Nexus') {
+        //     steps {
+        //        nexusArtifactUploader artifacts: [[artifactId: 'RegistrationApp',
+        //        classifier: '', file: 'target/RegistrationApp-1.2.war',
+        //        type: 'war']], 
+        //        credentialsId: 'nexus', 
+        //        groupId: 'com.example', 
+        //        nexusUrl: '18.191.133.95:8081', 
+        //        nexusVersion: 'nexus3', 
+        //        protocol: 'http', 
+        //        repository: 'project',
+        //        version: 'v1.$BUILD_NUMBER'
+        //     }
+        // }
         
         stage('Deploy to Tomcat') {
             steps {
                 deploy adapters: [tomcat9(credentialsId: 'tomcat', 
                 path: '', 
-                url: 'http://3.143.24.178:8080')],
+                url: 'http://3.129.217.110:8080')],
                 contextPath: 'mypath', 
                 war: '**/*.war'
             }
